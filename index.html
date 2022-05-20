@@ -18,17 +18,23 @@
 
         <!-- Content -->
         <article class="content">
-            <h1 class="content__title">Search GitHub users</h1>
+            <h1 class="content__title">Buscando Usuarios De Github</h1>
             <p>{{message}}</p>
         
 
             <!-- Search -->
-            <form class="search">
-                <input type="text" id="nombre" class="search__input" required placeholder="Search GitHub users">
-                <input type="submit" class="search__submit" value="Search">
+            <form class="search" v-on:submit.prevent="buscar">
+                <input type="text" v-model="busqueda" class="search__input" required placeholder="Search GitHub users">
+                <input type="submit"  class="search__submit" value="buscar">
             </form>
 
             <!-- Result -->
+            <div class="result" v-if="result">
+                <h2 class="result__name">Michael Alexis</h2>
+                <img class="result__avatar" src="imagenes/yanfry.jpg" alt=""> 
+                <p class="result__bio">aprendiz exitoso graduado de tenologia en ADSI sena</p>
+                <a href="www.youtube.com">www.youtube.com</a>
+            </div>
             <!-- Error -->
             <div class="result__error"></div>
         </article>

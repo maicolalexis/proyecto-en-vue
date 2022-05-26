@@ -30,13 +30,14 @@
 
             <!-- Result -->
             <div class="result" v-if="result">
-                <h2 class="result__name">Michael Alexis</h2>
-                <img class="result__avatar" src="imagenes/yanfry.jpg" alt=""> 
-                <p class="result__bio">aprendiz exitoso graduado de tenologia en ADSI sena</p>
-                <a href="www.youtube.com">www.youtube.com</a>
+                <h2 class="result__name">{{result.name}}</h2>
+                <img v-bind:src="result.avatar_url" class="result__avatar" alt=""> 
+                <p class="result__bio">{{result.bio}}</p>
+                <a class="result__url" v-bind:href="result.html_url">{{result.url}}</a>
             </div>
             <!-- Error -->
-            <div class="result__error"></div>
+            <p v-else style="text-align:center;">esperando la consulta</p>
+            <div v-if="error" class="result__error">Error</div>
         </article>
     </div>
     <script src="js/main.js"></script>

@@ -14,6 +14,11 @@
     <div id="app">
         <!-- Favorites -->
         <div class="favorites">
+            <div class="favorite" v-for="alias in todosFavorite">
+                <a>
+                    <img v-bind:src="alias.avatar_url" alt="" class="favorite__avatar">
+                </a>
+            </div>
         </div>
 
         <!-- Content -->
@@ -30,10 +35,14 @@
 
             <!-- Result -->
             <div class="result" v-if="result">
+                
+                
+                <a v-if="estaFavorito" class="result__toggle-favorite" href="" v-on:click.prevent="removeFavorito">remover Favorito<img src="imagenes/delete.gif" alt="" width="30" height="30"></a>
+                <a v-else class="result__toggle-favorite" href="" v-on:click.prevent="addFavorito">Añadir Favorito<img src="imagenes/extrela.gif" alt="" width="30" height="30"></a>
                 <h2 class="result__name">{{result.name}}</h2>
                 <img v-bind:src="result.avatar_url" class="result__avatar" alt=""> 
                 <p class="result__bio">{{result.bio}}</p>
-                <a class="result__url" v-bind:href="result.html_url">{{result.url}}</a>
+                <a target="_blank" class="result__url" v-bind:href="result.html_url" style="text-decoration:none; color: white;">perfil GitHub</a>
             </div>
             <!-- Error -->
             <p v-else style="text-align:center;">esperando la consulta</p>

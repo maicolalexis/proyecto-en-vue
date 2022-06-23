@@ -7,41 +7,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/vue@3"></script>
 </head>
 
-<body>
-    <div class="mt-5 float-left">
-        <form class="bg-zinc-700 rounded h-[25rem] w-[25rem] px-8 pt-6 pb-8 mb-4">
-            <div class="mb-4">
-                <label class="block text-neutral-50 text-sm font-bold mb-2" for="username">
-                    Nombre
-                </label>
-                <input
-                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="username" type="text" placeholder="Pepito perez">
-            </div>
-            
-            <div class="flex items-center">
-                <button
-                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                    type="button">
-                    Buscar Persona
-                </button>
-                
-            </div>
-        </form>
-    </div>
-    <div class="float-left ml-16 mt-5">
-        <div class="rounded-lg shadow-lg bg-white max-w-sm">
-            <img class="rounded-t-lg" src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" alt="" />
-            <div class="p-6">
-                <h5 class="text-gray-900 text-xl font-medium mb-2"></h5>
-                <p class="text-gray-700 text-base mb-4"></p>
+<body class="bg-neutral-900">
+    <div id="app">
+        <p class="text-sky-400/75 text-8xl text-center">API DE FACEBOOK</p>
+        <div class="items-center">
+            <form v-on:submit.prevent="buscar" class="search shadow-md rounded w-[35rem] px-8 pt-6 pb-8 mb-4 text-white">
 
+                <div class="mb-4">
+                    <label class="block text-sm font-bold mb-2" for="username">
+                        Nombre
+                    </label>
+
+                    <input v-model="busqueda" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="idPersona" type="number" placeholder="Pepito perez">
+                </div>
+
+                <div class="flex items-center">
+                    <input type="submit"  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" value="buscar">
+
+                </div>
+            </form>
+        </div>
+        <div class="ml-96 mt-5 result" v-if="result">
+            <div class="rounded-lg shadow-lg bg-white max-w-sm">
+                
+                <img  v-for v-bind:src="result.picture.data.url" class="content-center" alt="" />
+                <div class="p-6">
+                    <h5 class="text-gray-900 text-xl font-medium mb-2">{{result.name}}</h5>
+                    <p class="text-gray-700 text-base mb-4"></p>
+
+                </div>
             </div>
         </div>
     </div>
+    <script src="main.js"></script>
+    <script>
+        //creamos una constante para guardar el acoplamiento.
+        const moutedApp = app.mount('#app')
 
+    </script>
 </body>
 
 </html>

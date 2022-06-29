@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,32 +13,26 @@
 </head>
 
 <body class="bg-neutral-900">
+    <!--id mia = 2038590816328474-->
     <div id="app">
         <p class="text-sky-400/75 text-8xl text-center">API DE FACEBOOK</p>
-        <div class="items-center">
-            <form v-on:submit.prevent="buscar" class="search shadow-md rounded w-[35rem] px-8 pt-6 pb-8 mb-4 text-white">
-
-                <div class="mb-4">
-                    <label class="block text-sm font-bold mb-2" for="username">
-                        Nombre
-                    </label>
-
-                    <input v-model="busqueda" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="idPersona" type="number" placeholder="Pepito perez">
-                </div>
-
-                <div class="flex items-center">
-                    <input type="submit"  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" value="buscar">
-
-                </div>
-            </form>
+        <div class="mt-12">
+        <form form v-on:submit.prevent="buscar" class="search max-w-sm ml-[30rem]">
+            <div class="flex items-center border-b border-teal-500 py-2">
+              <input v-model="busqueda" class="appearance-none bg-transparent border-none w-full text-neutral-50 mr-3 py-1 px-2 leading-tight focus:outline-none" type="number" placeholder="Digite el ID">
+              <input type="submit" class="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded" type="button">
+              
+            </div>
+          </form>
         </div>
-        <div class="ml-96 mt-5 result" v-if="result">
-            <div class="rounded-lg shadow-lg bg-white max-w-sm">
+        <div class="ml-[33rem] mt-5 result flex items-center text-center" v-if="result">
+            <div class="rounded-lg shadow-lg bg-white max-w-sm justify-center">
                 
-                <img  v-for v-bind:src="result.picture.data.url" class="content-center" alt="" />
+                <img v-bind:src="result.picture.data.url" class="ml-[6rem]" alt="" />
                 <div class="p-6">
                     <h5 class="text-gray-900 text-xl font-medium mb-2">{{result.name}}</h5>
-                    <p class="text-gray-700 text-base mb-4"></p>
+                    <p class="text-gray-700 text-base mb-4">{{result.email}}</p>
+                    <p class="text-gray-700 text-base mb-4">{{result.birthday}}</p>
 
                 </div>
             </div>

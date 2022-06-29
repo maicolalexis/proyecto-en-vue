@@ -6,11 +6,12 @@ const app = Vue.createApp({
       result: null,
       error: null,
     }
-  }, methods: {
+  },
+  methods: {
 
     async buscar() {
       try {
-        const response = await fetch(API + this.busqueda +'?fields=id,name,email,picture&access_token=EAAFaNshrhkgBAMJYcYrcbs4kDOOy6IcxQYmU0oIbBzbZB8DShij4KBO0vVjwlcZBrRSfYAbHPrKPQ1Qq446jVD41jdUarCZCtm70NXh3suTEUTWb1hF5F1frW1ZC6G2x7MV3PTyZCnFkPoZBaEe0requJGn1TDoG4HpN4NdS244QZDZD')
+        const response = await fetch(API + this.busqueda + '?fields=name,email,picture,birthday&access_token=EAAFaNshrhkgBAGES8rNKip9mClrfdlqVoky8yNQoZAFa2BUZC4MV86fKYdBFNRMCgGDYBzfa18vj280FnDVLhM7GECvZCxBLjuMnb2KWpCXbHIjYbMEUAvGdVfblmhOgC84sjI376tGNR2zS7VAkvUOs2bIgWuDL2FxPMD6XwZDZD')
         const data = await response.json()
         console.log(data)
 

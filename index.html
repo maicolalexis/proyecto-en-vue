@@ -12,29 +12,45 @@
     <script src="https://unpkg.com/vue@3"></script>
 </head>
 
-<body class="bg-neutral-900">
+<body class="">
     <!--id mia = 2038590816328474-->
     <div id="app">
+        <div class="favorites">
+            <transition-Group name="list">
+            <div class="favorite" v-for="alias in todosFavorite" :key="alias.id">
+                <!--@ es la abreviatura de v-on para escuchar eventos-->
+                <a @click.prevent="mostrarFavorito(alias)" href="">
+                    <img v-bind:src="alias.picture.data.url" alt="" class="height-[5rem] m-[0.3rem]">
+                </a>
+            </div>
+        </transition-Group>
+        </div>
         <p class="text-sky-400/75 text-8xl text-center">API DE FACEBOOK</p>
         <div class="mt-12">
         <form form v-on:submit.prevent="buscar" class="search max-w-sm ml-[30rem]">
             <div class="flex items-center border-b border-teal-500 py-2">
-              <input v-model="busqueda" class="appearance-none bg-transparent border-none w-full text-neutral-50 mr-3 py-1 px-2 leading-tight focus:outline-none" type="number" placeholder="Digite el ID">
-              <input type="submit" class="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded" type="button">
+            <!---->
+              <input v-model="busqueda" class="appearance-none bg-transparent border-none w-full text-neutral-900 mr-3 py-1 px-2 leading-tight focus:outline-none" type="number" placeholder="Digite el ID">
+              <input type="submit" class="flex-shrink-0 bg-sky-400/75 hover:bg-teal-700 border-sky-400/75 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded" value="buscar">
               
             </div>
           </form>
         </div>
-        <div class="ml-[33rem] mt-5 result flex items-center text-center" v-if="result">
-            <div class="rounded-lg shadow-lg bg-white max-w-sm justify-center">
+        <div class="ml-[33rem] mt-5 result flex items-center text-center w-[230px] h-[230px]" v-if="result">
+            <div class="bg-sky-400/75 rounded-lg shadow-lg max-w-sm flex flex-wrap justify-center">
                 
-                <img v-bind:src="result.picture.data.url" class="ml-[6rem]" alt="" />
+                <img v-bind:src="result.picture.data.url" class="rounded-full" alt="" />
                 <div class="p-6">
                     <h5 class="text-gray-900 text-xl font-medium mb-2">{{result.name}}</h5>
-                    <p class="text-gray-700 text-base mb-4">{{result.email}}</p>
-                    <p class="text-gray-700 text-base mb-4">{{result.birthday}}</p>
-
+                    
                 </div>
+                <div class="p-1 bg-white rounded-md ">
+                <a v-if="estaFavorito" class="text-gray-900 text-xl font-medium mb-2" href="" v-on:click.prevent="removeFavorito">remover Favorito</a>
+                <a v-else href="#" class="text-gray-900 text-xl font-medium mb-2" v-on:click.prevent="addFavorito">Añadir a Favoritos</h5></a>
+                </div>        
+                    
+                </div>
+                
             </div>
         </div>
     </div>

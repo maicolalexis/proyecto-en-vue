@@ -16,7 +16,7 @@ const app = Vue.createApp({
 
     }
   },computed:{
-        //queremos saber si esta en los favoritos
+        //queremos saber si esta en los favoritos 
 
         estaFavorito(){
          return this.favorito.has(this.result.id) 
@@ -31,7 +31,7 @@ const app = Vue.createApp({
 
     async buscar() {
       try {
-        const response = await fetch(API + this.busqueda + '?fields=name,email,picture,birthday,link&access_token=EAAFaNshrhkgBAPiW1dkj942EVWoUE0sZBzYNfbZB0ErFU2qcpCUoMeXMcB8JRZCYporSIcKsvgneQMeEUmfKTwUJhu8Cwwl7mG98IqnfewPZAEl0Xb7wubePrBWldMNw16li8HkICXyaRlJZC3AwhM50VwMKl9scb5KOwnVuPZBhZCYiYwbunT4l3wlssP89WWulkl1QhxskJf8rIGOWZCyKs650z6gKrPqEpHrLxgEqxiNFWPRB2SEN')
+        const response = await fetch(API + this.busqueda + '?fields=name,email,picture,birthday,link&access_token=EAAFaNshrhkgBAAK1DZAnz2NaWUAZBs5FXbDI8c5LKu3X9OfrVhC5TIgsLitSzN9ZAm774JzZBcF45HAeoMryBOOLbjcZCeg2IVjtFWgkaJ5exBiBJQMqJLZCB4CBhdlLBhbvohUov6RLV6iMZAyX78BZBop8xkIdZBwUgcUdzlqIvucbRzwCgM39fWPUSjYa4BVZCAqIZAjPMS5qzpQEGAZCLQlZCh7OAgz9SI5mJe2CgKH7DAKo1v6Dp2vPa')
         const data = await response.json()
         console.log(data)
 
